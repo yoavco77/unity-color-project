@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour
        
 
         //looking for input and shooting
-        if (Input.GetKeyDown(KeyCode.Space) && canFire == true)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && canFire == true)
         {
             shoot();
             StartCoroutine(cooldownWait());
