@@ -5,27 +5,38 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public Transform spawner;
-    public GameObject bullet;
+    public float bulletSpeed;
+    public GameObject bulletPrefab;
     public float cooldown;
-    private float timer;
+    private float cooldownTimer;
     private bool canFire = true;
     void Update()
     {
-        timer += Time.deltaTime * 3;
-        
-        if (timer > cooldown )
+        cooldownTimer += Time.deltaTime * 3;
+        if (cooldownTimer > cooldown )
         {
             canFire = true;
-            timer = 0;
+            cooldownTimer = 0;
         }
+
 
         if (Input.GetKeyDown(KeyCode.Space) && canFire)
         {
-            Instantiate(bullet, spawner.position, spawner.rotation);
-            canFire = false;
+
+            shoot();
+            
         }
         
 
         
     }
+
+    void shoot()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, new Vector3(spawner.position.x, spawner.position.y, 1), spawner.rotation);
+        canFire = false;
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(spawner.right * bulletSpeed, ForceMode2D.Impulse);
+    }
+
 }
