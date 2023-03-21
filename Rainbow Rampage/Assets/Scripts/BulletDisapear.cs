@@ -6,12 +6,15 @@ public class BulletDisapear : MonoBehaviour
 {
     private float timer;
     public float bulletRange;
+    public int BulletDamage;
+    private EnemyLogic logic;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            logic = collision.gameObject.GetComponent<EnemyLogic>();
+            logic.hurt(BulletDamage);
             Destroy(gameObject);
         }
     }

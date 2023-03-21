@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7292503766176695969}
   - component: {fileID: 7292503766176695974}
   - component: {fileID: -7966731866201798168}
+  - component: {fileID: 5601591029590047394}
   m_Layer: 0
-  m_Name: PinkPig
+  m_Name: DeadlyMissle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 699228dd268c0044ca8eb713a8caa3f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b86d1b9ac458ffd489a1b5c05a2bb487, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.04362014}
+  m_Offset: {x: 0.0018973053, y: 0.016373977}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8429679}
+  m_Size: {x: 0.6395125, y: 0.6711073}
   m_EdgeRadius: 0
 --- !u!50 &7292503766176695974
 Rigidbody2D:
@@ -152,3 +153,16 @@ MonoBehaviour:
   followSpeed: 3
   target: {fileID: 0}
   minDistance: 3
+--- !u!114 &5601591029590047394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292503766176695970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27419115b3d8c2549b49af9f94ef2fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
