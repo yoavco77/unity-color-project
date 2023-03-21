@@ -229,6 +229,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5601591029590047394, guid: 2bf0e3dfb0959e540b6e5223a1ce7d32, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7292503766176695970, guid: 2bf0e3dfb0959e540b6e5223a1ce7d32, type: 3}
       propertyPath: m_Name
       value: PinkPig
@@ -370,7 +374,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0afe105658d08de4cbb525b53c38905c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d2076c16511b05f4ea792776b60b4efb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -389,8 +393,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896972318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.21, y: 1.92, z: 0}
-  m_LocalScale: {x: 3.8435, y: 4.0158, z: 1}
+  m_LocalPosition: {x: -7.79, y: 1.97, z: 0}
+  m_LocalScale: {x: 3.8028753, y: 4.1126037, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1936467082}
@@ -423,7 +427,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.007571861, y: 0.05072692}
+  m_Offset: {x: 0.0236817, y: 0.109612435}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -434,7 +438,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.772853, y: 0.6956385}
+  m_Size: {x: 0.6478392, y: 0.7170773}
   m_EdgeRadius: 0
 --- !u!1 &1936467080
 GameObject:
@@ -515,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936467080}
   m_LocalRotation: {x: -0.005237413, y: -0.000038021364, z: 0.0072542094, w: -0.99996}
-  m_LocalPosition: {x: 0.26017955, y: 0.0124508375, z: 0.08}
+  m_LocalPosition: {x: 0.287, y: -0.08, z: 0.08}
   m_LocalScale: {x: 0.5658199, y: 0.5840497, z: 0.9996692}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -538,7 +542,9 @@ MonoBehaviour:
   spawner: {fileID: 1340084446}
   bulletSpeed: 10
   bulletPrefab: {fileID: 2926696358053375287, guid: e31552d7179f5944d9af947622ac03af, type: 3}
-  cooldown: 3
+  cooldown: 1
+  bulletDamage: 0
+  bulletRange: 3
 --- !u!114 &1936467084
 MonoBehaviour:
   m_ObjectHideFlags: 0

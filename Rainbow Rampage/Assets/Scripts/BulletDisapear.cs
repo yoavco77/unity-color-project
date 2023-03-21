@@ -14,7 +14,6 @@ public class BulletDisapear : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             logic = collision.gameObject.GetComponent<EnemyLogic>();
-            logic.hurt(BulletDamage);
             Destroy(gameObject);
         }
     }
