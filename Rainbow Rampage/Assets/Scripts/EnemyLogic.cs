@@ -30,7 +30,7 @@ public class EnemyLogic : MonoBehaviour
             if (collision.gameObject.CompareTag("Bullet") && spriteRenderer.color == colorHandler.getColor()) 
             {
                 Destroy(collision.gameObject);
-                TakeDamge(gun.bulletDamage);
+                TakeDamge(25);
             }
         }
     }
