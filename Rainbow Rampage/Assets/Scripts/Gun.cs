@@ -5,6 +5,8 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public Transform spawner;
+    public PlayerColorHandler colorHandler;
+    private SpriteRenderer spriteRenderer;
     public float bulletSpeed;
     public GameObject bulletPrefab;
     public float cooldown;
@@ -37,6 +39,11 @@ public class Gun : MonoBehaviour
     {
         canFire = false;
         GameObject bullet = Instantiate(bulletPrefab, new Vector3(spawner.position.x, spawner.position.y, 1), spawner.rotation);
+        if (bullet != null )
+        {
+        bullet.GetComponent<SpriteRenderer>().color = colorHandler.getColor();
+
+        }
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(spawner.right * bulletSpeed, ForceMode2D.Impulse);
         StartCoroutine(bulletDespawn(bullet));
