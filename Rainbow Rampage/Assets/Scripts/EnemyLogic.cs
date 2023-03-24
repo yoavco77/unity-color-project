@@ -9,6 +9,10 @@ public class EnemyLogic : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     int currentHealth;
     public Gun gun;
+    public GameObject player;
+    public Camera mainCam;
+    public Vector3 topLeft;
+    public Vector3 bottomRight;
 
     private void Start()
     {
@@ -51,4 +55,6 @@ public class EnemyLogic : MonoBehaviour
     {
         currentHealth -= damage;
     }
+
+
 }

@@ -3,26 +3,35 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class WaveSystem : MonoBehaviour
 {
     public enum SpawnState { Spawning, Fighting, Counting};
+    
     [System.Serializable]
-    public class Wave
+    
+    public class Wave //wave class to create waves thrgouh inspector
     {
         public string name;
-        public Transform enemy;
+        public GameObject enemy;
         public int enemyCount;
         public float rate;
     }
-
-    public Wave[] waves;
+    
+    public Wave[] waves;//making sure we have timers and shit
     private int nextWave = 0;
     public float timeInBetween = 5f;
     public float waveCountdown;
-
     private float checkCountdown = 1f;
 
+    public GameObject player;//all player and cam related var
+    public Camera mainCam;
+    public Vector3 topLeft;
+    public Vector3 bottomRight;
+
+
+    public float safeZoneRadius;
     private SpawnState state = SpawnState.Counting;
     void Start()
     {
@@ -32,10 +41,16 @@ public class WaveSystem : MonoBehaviour
 
     void Update()
     {
+        //updating in case of camera follow
+        topLeft = mainCam.ViewportToWorldPoint(new Vector3(0, 1, mainCam.nearClipPlane));
+        bottomRight = mainCam.ViewportToWorldPoint(new Vector3(1, 0, mainCam.nearClipPlane));
+
+        //waiting for the current wave to end
         if (state == SpawnState.Fighting)
         {
             if (!IsEnemyAlive())
             {
+                state = SpawnState.Counting;
                 return;
             }
             else
@@ -44,7 +59,7 @@ public class WaveSystem : MonoBehaviour
             }
         }
 
-
+        //waiting for countdown to end and starting next wave
         if (waveCountdown <= 0)
         {
             if (state != SpawnState.Spawning)
@@ -59,7 +74,7 @@ public class WaveSystem : MonoBehaviour
 
     }
 
-    bool IsEnemyAlive()
+    bool IsEnemyAlive() //looping through all game objects once a sec to look for enemys 
     {
         checkCountdown -= Time.deltaTime;
         
@@ -68,7 +83,6 @@ public class WaveSystem : MonoBehaviour
             checkCountdown = 1f;
             if(GameObject.FindGameObjectWithTag("Enemy") == null)
             {
-                waveCountdown = timeInBetween;
                 return false;
             }
         }
@@ -102,9 +116,24 @@ public class WaveSystem : MonoBehaviour
     }
 
 
-    void SpawnEnemy(Transform _enemy)
+    void SpawnEnemy(GameObject _enemy)
     {
-        Instantiate(_enemy, transform.position, transform.rotation);
+        Vector3 randomPos = new Vector3();
+        //making random positions until it is not in the safe zone
+        do
+        {
+            randomPos = new Vector3(Random.Range(topLeft.x, bottomRight.x), Random.Range(bottomRight.y, topLeft.y), 1);
+        } while (Vector3.Distance(randomPos, player.transform.position) <= safeZoneRadius);
+        Instantiate(_enemy, randomPos, transform.rotation);
+
     }
 
-}
+    private void OnDrawGizmos()// look i got Gizmos to work
+    {
+        if (player == null) return;
+        Gizmos.DrawWireSphere(player.transform.position, safeZoneRadius);
+    }
+    //fuck you i hate commenting
+}  
+
+
