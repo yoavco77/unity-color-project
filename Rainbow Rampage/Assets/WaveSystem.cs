@@ -7,11 +7,11 @@ using UnityEngine.VFX;
 
 public class WaveSystem : MonoBehaviour
 {
-    public enum SpawnState { Spawning, Fighting, Counting};
+    public enum SpawnState {Spawning, Fighting, Counting};
     
     [System.Serializable]
     
-    public class Wave //wave class to create waves thrgouh inspector
+    public class Wave //wave class to create waves through inspector
     {
         public string name;
         public GameObject enemy;
@@ -33,6 +33,8 @@ public class WaveSystem : MonoBehaviour
 
     public float safeZoneRadius;
     private SpawnState state = SpawnState.Counting;
+
+
     void Start()
     {
         waveCountdown = timeInBetween;
@@ -124,7 +126,8 @@ public class WaveSystem : MonoBehaviour
         {
             randomPos = new Vector3(Random.Range(topLeft.x, bottomRight.x), Random.Range(bottomRight.y, topLeft.y), 1);
         } while (Vector3.Distance(randomPos, player.transform.position) <= safeZoneRadius);
-        Instantiate(_enemy, randomPos, transform.rotation);
+        GameObject enemy = Instantiate(_enemy, randomPos, transform.rotation);
+        enemy.GetComponent<SpriteRenderer>().color = randomColor();
 
     }
 
@@ -133,7 +136,32 @@ public class WaveSystem : MonoBehaviour
         if (player == null) return;
         Gizmos.DrawWireSphere(player.transform.position, safeZoneRadius);
     }
+
+    Color randomColor()
+    {
+        Color pick;
+        int randomColor = Random.Range(0, 4);
+        if (randomColor == 0)
+        {
+            pick = Color.red;
+        }
+        else if (randomColor == 1)
+        {
+            pick = Color.green;
+        }
+        else if (randomColor == 2)
+        {
+            pick = Color.cyan;
+        }
+        else
+        {
+            pick = Color.yellow;
+        }
+
+        return pick;
+    }
     //fuck you i hate commenting
+    //I love you so much yair <3
 }  
 
 
