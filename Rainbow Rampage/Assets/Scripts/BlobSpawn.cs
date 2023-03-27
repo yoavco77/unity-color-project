@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Profiling;
 using UnityEngine;
 
 public class BlobSpawn : MonoBehaviour
@@ -14,7 +15,13 @@ public class BlobSpawn : MonoBehaviour
     Vector3 bottomRight;
 
 
-    
+    public float minAliveTime = 8f;
+    public float maxAliveTime = 15f;
+
+
+
+
+
     void Update()
     {
         topLeft = mainCam.ViewportToWorldPoint(new Vector3(0, 1, mainCam.nearClipPlane));
@@ -25,16 +32,28 @@ public class BlobSpawn : MonoBehaviour
             canSpawn = false;
             StartCoroutine(startSpawn());
         }
+
+
     }
 
-    IEnumerator startSpawn()
+    IEnumerator startSpawn()// a loop that spawns blobs at random times
     {
-        SpawnEnemy(colorBlob);
-        yield return new WaitForSeconds(spawnRate);
-        canSpawn = true;
-        
+        while (true)
+        {
+            SpawnEnemy(colorBlob);
+
+            float spawnDelay = Random.Range(2f, 7f);
+            yield return new WaitForSeconds(spawnDelay);
+        }
     }
-    void SpawnEnemy(GameObject colorBlob)
+    
+    IEnumerator destroyAtRandom(GameObject colorBlob,float randomAliveTime) //destroy the blob after a certain amount of time
+    {
+        yield return new WaitForSeconds(randomAliveTime);
+        DestroyImmediate(colorBlob);
+    }
+
+    void SpawnEnemy(GameObject colorBlob)//spawn a blob
     {
         Vector3 randomPos = new Vector3();
         do
@@ -44,9 +63,13 @@ public class BlobSpawn : MonoBehaviour
         GameObject blob = Instantiate(colorBlob, randomPos, transform.rotation);
         blob.GetComponent<SpriteRenderer>().color = randomColor();
 
+        //run the IEnumerator
+        float randomAliveTime = Random.Range(minAliveTime, maxAliveTime);
+        StartCoroutine(destroyAtRandom(blob, randomAliveTime));
+
     }
 
-    Color randomColor()
+    Color randomColor() //genarating a random color
     {
         int randomColor = Random.Range(0, 4);
         if (randomColor == 0)
@@ -65,5 +88,8 @@ public class BlobSpawn : MonoBehaviour
         {
             return Color.yellow;
         }
+
     }
+
+
 }
