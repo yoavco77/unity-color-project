@@ -17,6 +17,7 @@ public class WaveSystem : MonoBehaviour
         public GameObject enemy;
         public int enemyCount;
         public float rate;
+        public GameObject boss;
     }
     
     public Wave[] waves;//making sure we have timers and shit
