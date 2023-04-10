@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static WaveSystem;
 
 public class BossLogic : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class BossLogic : MonoBehaviour
     public float attackCountdown;
     public float attackRate;
 
-    public float missleSpawnRadius = 3f;
 
+    public float missleSpawnRadius = 3f;
+    public float missleAttackRate = 0.05f;
+    
     void Start()
     {
         attackCountdown = attackRate;
@@ -18,27 +21,32 @@ public class BossLogic : MonoBehaviour
 
     void Update()
     {
-        attackCountdown -= Time.deltaTime;
-
+        //waiting to attack
         if (attackCountdown <= 0)
         {
-            spawnMissles();
+            StartCoroutine(SpawnMissles());
             attackCountdown = attackRate;
         }
+        else
+        {
+            attackCountdown -= Time.deltaTime;
+        }
+
+
     }
-    void spawnMissles()
+
+
+
+    IEnumerator SpawnMissles()
     {
-        
+        //spawning 4-8 missles with a random offset from the boss's pivot point with a delay of 0.5 sec
         int randomMissleAmount = Random.Range(4, 8);
-        
-        while (randomMissleAmount != 0)
+        for (int i = 0;i < randomMissleAmount; i++)
         {
             Vector3 spawnPoint = transform.position + Random.insideUnitSphere * missleSpawnRadius;
             Instantiate(Missle, spawnPoint, transform.rotation);
-            randomMissleAmount -= 1;
+            yield return new WaitForSeconds(0.5f);
         }
 
     }
-
-    
 }

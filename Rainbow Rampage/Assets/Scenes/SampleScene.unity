@@ -212,6 +212,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4883203051364032882, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 270e3b903daf632409150cdf90adf0ff, type: 3}
     - target: {fileID: 412713969501390518, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -366,7 +370,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82de280fe357b9345a07f37253b260fb, type: 3}
   m_Name: 
@@ -789,3 +793,24 @@ MonoBehaviour:
   attackCountdown: 0
   attackRate: 5
   missleSpawnRadius: 3
+  missleAttackRate: 0.05
+--- !u!95 &2015236121
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015236119}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82e6485e3f9aa2a48a4a1fea81f42185, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
