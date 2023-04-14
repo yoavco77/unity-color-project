@@ -24,7 +24,7 @@ public class BossLogic : MonoBehaviour
         //waiting to attack
         if (attackCountdown <= 0)
         {
-            StartCoroutine(SpawnMissles());
+
             attackCountdown = attackRate;
         }
         else
@@ -37,16 +37,4 @@ public class BossLogic : MonoBehaviour
 
 
 
-    IEnumerator SpawnMissles()
-    {
-        //spawning 4-8 missles with a random offset from the boss's pivot point with a delay of 0.5 sec
-        int randomMissleAmount = Random.Range(4, 8);
-        for (int i = 0;i < randomMissleAmount; i++)
-        {
-            Vector3 spawnPoint = transform.position + Random.insideUnitSphere * missleSpawnRadius;
-            Instantiate(Missle, spawnPoint, transform.rotation);
-            yield return new WaitForSeconds(0.5f);
-        }
-
-    }
 }

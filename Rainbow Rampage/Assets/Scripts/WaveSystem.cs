@@ -18,6 +18,8 @@ public class WaveSystem : MonoBehaviour
         public int enemyCount;
         public float rate;
         public GameObject boss;
+        public GameObject bossRune;
+
     }
     
     public Wave[] waves;//making sure we have timers and shit
@@ -31,10 +33,16 @@ public class WaveSystem : MonoBehaviour
     public Vector3 topLeft;
     public Vector3 bottomRight;
 
+    public Vector3 top;
+    public Vector3 bottom;
+    public Vector3 left;
+    public Vector3 right;
+
 
     public float safeZoneRadius;
     private SpawnState state = SpawnState.Counting;
 
+    public Vector3[] runePos;
 
     void Start()
     {
@@ -47,6 +55,13 @@ public class WaveSystem : MonoBehaviour
         //updating in case of camera follow
         topLeft = mainCam.ViewportToWorldPoint(new Vector3(0, 1, mainCam.nearClipPlane));
         bottomRight = mainCam.ViewportToWorldPoint(new Vector3(1, 0, mainCam.nearClipPlane));
+
+        //updating in case of camera follow
+        Vector3[] runePos = new Vector3[4];
+        runePos[0] = mainCam.ViewportToWorldPoint(new Vector3(0.5f, 0.75f, mainCam.nearClipPlane));
+        runePos[1] = mainCam.ViewportToWorldPoint(new Vector3(0.5f, 0.25f, mainCam.nearClipPlane));
+        runePos[2] = mainCam.ViewportToWorldPoint(new Vector3(0.25f, 0.5f, mainCam.nearClipPlane));
+        runePos[3] = mainCam.ViewportToWorldPoint(new Vector3(0.25f, 0.5f, mainCam.nearClipPlane));
 
         //waiting for the current wave to end
         if (state == SpawnState.Fighting)
@@ -104,6 +119,11 @@ public class WaveSystem : MonoBehaviour
 
         state = SpawnState.Fighting;
 
+        if (_wave.boss != null)
+        {
+            SpawnBoss(_wave.bossRune, _wave.boss);
+        } 
+
         nextWave++;
 
         if (nextWave >= waves.Length)
@@ -114,8 +134,6 @@ public class WaveSystem : MonoBehaviour
         waveCountdown = timeInBetween;
 
         yield break;
-
-
     }
 
 
@@ -163,6 +181,31 @@ public class WaveSystem : MonoBehaviour
     }
     //fuck you i hate commenting
     //I love you so much yair <3
+
+    void SpawnBoss(GameObject _rune,GameObject _boss)
+    {
+        for (int i =0; i < 4; i++)
+        {
+            GameObject bossRune = Instantiate(_rune, runePos[i], transform.rotation);
+        }
+        
+        
+        GameObject bossRune1 = Instantiate(_rune , top, transform.rotation);
+        bossRune1.transform.localScale = new Vector3(10.5f, 10.5f, 10.5f);
+        
+        GameObject bossRune2 = Instantiate(_rune, bottom, transform.rotation);
+        bossRune2.transform.localScale = new Vector3(10.5f, 10.5f, 10.5f);
+        
+        GameObject bossRune3 = Instantiate(_rune, left, transform.rotation);
+        bossRune3.transform.localScale = new Vector3(10.5f, 10.5f, 10.5f);
+        
+        GameObject bossRune4 = Instantiate(_rune, right, transform.rotation);
+        bossRune4.transform.localScale = new Vector3(10.5f, 10.5f, 10.5f);
+
+
+        GameObject boss = Instantiate(_boss, right, transform.rotation);
+        boss.transform.localScale = new Vector3(10.5f, 10.5f, 10.5f);
+    }
 }  
 
 

@@ -148,29 +148,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93046326}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a1829b96e7892b45a5c9f9cf85fcf02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - name: Wave 1
+  - name: Boss
     enemy: {fileID: 7292503766176695970, guid: 2bf0e3dfb0959e540b6e5223a1ce7d32, type: 3}
-    enemyCount: 2
-    rate: 1
-    boss: {fileID: 0}
-  - name: Wave 2
-    enemy: {fileID: 7292503766176695970, guid: 2bf0e3dfb0959e540b6e5223a1ce7d32, type: 3}
-    enemyCount: 3
-    rate: 1.5
-    boss: {fileID: 0}
+    enemyCount: 0
+    rate: 0
+    boss: {fileID: 412713969501390518, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
+    bossRune: {fileID: 915710424134589598, guid: 16e6364fe11c5024b9c78ec136bcebf2, type: 3}
   timeInBetween: 5
   waveCountdown: 0
   player: {fileID: 1896972318}
   mainCam: {fileID: 519420031}
   topLeft: {x: 0, y: 0, z: 0}
   bottomRight: {x: 0, y: 0, z: 0}
+  top: {x: 0, y: 0, z: 0}
+  bottom: {x: 0, y: 0, z: 0}
+  left: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0, z: 0}
   safeZoneRadius: 5.11
+  runePos: []
 --- !u!4 &93046328
 Transform:
   m_ObjectHideFlags: 0
@@ -205,79 +206,6 @@ MonoBehaviour:
   spawnRate: 4
   minAliveTime: 8
   maxAliveTime: 15
---- !u!1001 &270617890
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -4883203051364032882, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 270e3b903daf632409150cdf90adf0ff, type: 3}
-    - target: {fileID: 412713969501390518, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_Name
-      value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.2585473
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 7.8497267
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.9086999
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.4866
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.3944
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239993252385824604, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +289,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -377,7 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followSpeed: 4
   target: {fileID: 1896972320}
---- !u!1001 &675474698
+--- !u!1001 &1290959207
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -394,23 +322,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1121066547438062979, guid: 16e6364fe11c5024b9c78ec136bcebf2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8.260442
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 1121066547438062979, guid: 16e6364fe11c5024b9c78ec136bcebf2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8.260442
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 1121066547438062979, guid: 16e6364fe11c5024b9c78ec136bcebf2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 8.260442
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 1121066547438062979, guid: 16e6364fe11c5024b9c78ec136bcebf2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.08
+      value: -1.93
       objectReference: {fileID: 0}
     - target: {fileID: 1121066547438062979, guid: 16e6364fe11c5024b9c78ec136bcebf2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.81
+      value: 8.73
       objectReference: {fileID: 0}
     - target: {fileID: 1121066547438062979, guid: 16e6364fe11c5024b9c78ec136bcebf2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -653,7 +581,7 @@ Transform:
   - {fileID: 1936467082}
   - {fileID: 1699454669}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1896972321
 MonoBehaviour:
@@ -845,45 +773,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0539efc11885f54b88a104849776df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2015236119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 412713969501390518, guid: de5e5d50f453a6940be9c889edc2e3c5, type: 3}
-  m_PrefabInstance: {fileID: 270617890}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2015236120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015236119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5158cb119311a004bbf741fe2be5b1ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missle: {fileID: 7292503766176695970, guid: 2bf0e3dfb0959e540b6e5223a1ce7d32, type: 3}
-  attackCountdown: 0
-  attackRate: 5
-  missleSpawnRadius: 3
-  missleAttackRate: 0.05
---- !u!95 &2015236121
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015236119}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 82e6485e3f9aa2a48a4a1fea81f42185, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
