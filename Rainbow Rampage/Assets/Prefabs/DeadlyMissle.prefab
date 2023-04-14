@@ -169,3 +169,7 @@ MonoBehaviour:
   colorHandler: {fileID: 0}
   spriteRenderer: {fileID: 7292503766176695968}
   gun: {fileID: 0}
+  player: {fileID: 0}
+  mainCam: {fileID: 0}
+  topLeft: {x: 0, y: 0, z: 0}
+  bottomRight: {x: 0, y: 0, z: 0}

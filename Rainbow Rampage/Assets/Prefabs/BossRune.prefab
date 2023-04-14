@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2752436988731481214}
   m_Layer: 0
   m_Name: BossRune
-  m_TagString: Untagged
+  m_TagString: Rune
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
