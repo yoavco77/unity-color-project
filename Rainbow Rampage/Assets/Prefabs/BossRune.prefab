@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1121066547438062979}
   - component: {fileID: 1177222658570911563}
   - component: {fileID: -2752436988731481214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BossRune
   m_TagString: Rune
   m_Icon: {fileID: 0}

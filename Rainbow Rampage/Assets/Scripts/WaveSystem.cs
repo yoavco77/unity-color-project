@@ -187,23 +187,24 @@ public class WaveSystem : MonoBehaviour
         left = mainCam.ViewportToWorldPoint(new Vector3(0.25f, 0.5f, mainCam.nearClipPlane));
         right = mainCam.ViewportToWorldPoint(new Vector3(0.75f, 0.5f, mainCam.nearClipPlane));
 
-        //spawning the runes and the boss and scaling them by 10.5
-        GameObject boss = Instantiate(_boss, right, transform.rotation);
-        boss.transform.localScale = new Vector3(10.5f, 10.5f, 10.5f);
-
-
         GameObject bossRune1 = Instantiate(_rune , top, transform.rotation);
-        bossRune1.transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
+        bossRune1.transform.localScale = new Vector3(5f, 5f, 5f);
         
         GameObject bossRune2 = Instantiate(_rune, bottom, transform.rotation);
-        bossRune2.transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
+        bossRune2.transform.localScale = new Vector3(5f, 5f, 5f);
         
         GameObject bossRune3 = Instantiate(_rune, left, transform.rotation);
-        bossRune3.transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
+        bossRune3.transform.localScale = new Vector3(5f, 5f, 5f);
         
         GameObject bossRune4 = Instantiate(_rune, right, transform.rotation);
-        bossRune4.transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
+        bossRune4.transform.localScale = new Vector3(5f, 5f, 5f);
+        
+        //spawning the runes and the boss and scaling them by 10.5
+        GameObject boss = Instantiate(_boss, topLeft, transform.rotation);
+        boss.transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
 
+        ///
+        ///
 
     }
 }  

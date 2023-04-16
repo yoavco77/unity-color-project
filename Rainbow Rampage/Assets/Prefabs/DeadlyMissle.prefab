@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7292503766176695974}
   - component: {fileID: -7966731866201798168}
   - component: {fileID: 5601591029590047394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeadlyMissle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
