@@ -20,7 +20,7 @@ public class BossFollowRune : StateMachineBehaviour
         animator.GetComponent<Transform>().position = Vector2.MoveTowards(animator.GetComponent<Transform>().position, runePos, 3 * Time.fixedDeltaTime);
         if (animator.GetComponent<Transform>().position == Runes[randomRune].transform.position)
         {
-            animator.SetTrigger("AtRune");
+            animator.SetTrigger("Attack");
         }
     }
 
