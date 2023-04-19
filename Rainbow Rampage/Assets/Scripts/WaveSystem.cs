@@ -18,6 +18,8 @@ public class WaveSystem : MonoBehaviour
         public int enemyCount;
         public float rate;
         public GameObject boss;
+        public GameObject bossRune;
+
     }
     
     public Wave[] waves;//making sure we have timers and shit
@@ -31,10 +33,16 @@ public class WaveSystem : MonoBehaviour
     public Vector3 topLeft;
     public Vector3 bottomRight;
 
+    public Vector3 top;
+    public Vector3 bottom;
+    public Vector3 left;
+    public Vector3 right;
+
 
     public float safeZoneRadius;
     private SpawnState state = SpawnState.Counting;
 
+    public Vector3[] runePos;
 
     void Start()
     {
@@ -47,6 +55,9 @@ public class WaveSystem : MonoBehaviour
         //updating in case of camera follow
         topLeft = mainCam.ViewportToWorldPoint(new Vector3(0, 1, mainCam.nearClipPlane));
         bottomRight = mainCam.ViewportToWorldPoint(new Vector3(1, 0, mainCam.nearClipPlane));
+
+        //updating in case of camera follow
+
 
         //waiting for the current wave to end
         if (state == SpawnState.Fighting)
@@ -84,7 +95,7 @@ public class WaveSystem : MonoBehaviour
         if(checkCountdown <= 0f)
         {
             checkCountdown = 1f;
-            if(GameObject.FindGameObjectWithTag("Enemy") == null)
+            if((GameObject.FindGameObjectWithTag("Enemy") == null) && (GameObject.FindGameObjectWithTag("Boss") == null ))
             {
                 return false;
             }
@@ -104,6 +115,11 @@ public class WaveSystem : MonoBehaviour
 
         state = SpawnState.Fighting;
 
+        if (_wave.boss != null)
+        {
+            SpawnBoss(_wave.bossRune, _wave.boss);
+        } 
+
         nextWave++;
 
         if (nextWave >= waves.Length)
@@ -114,8 +130,6 @@ public class WaveSystem : MonoBehaviour
         waveCountdown = timeInBetween;
 
         yield break;
-
-
     }
 
 
@@ -163,6 +177,44 @@ public class WaveSystem : MonoBehaviour
     }
     //fuck you i hate commenting
     //I love you so much yair <3
+
+    void SpawnBoss(GameObject _rune,GameObject _boss)
+    {
+        
+        //making positions for the boss runes in a quarter distance from the center of the screen
+        top = mainCam.ViewportToWorldPoint(new Vector3(0.5f, 0.75f, mainCam.nearClipPlane));
+        bottom = mainCam.ViewportToWorldPoint(new Vector3(0.5f, 0.25f, mainCam.nearClipPlane));
+        left = mainCam.ViewportToWorldPoint(new Vector3(0.25f, 0.5f, mainCam.nearClipPlane));
+        right = mainCam.ViewportToWorldPoint(new Vector3(0.75f, 0.5f, mainCam.nearClipPlane));
+
+
+        GameObject boss = Instantiate(_boss, topLeft, transform.rotation);
+        boss.transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
+
+
+        GameObject bossRune1 = Instantiate(_rune , top, transform.rotation);
+        bossRune1.transform.position = new Vector3(bossRune1.transform.position.x, bossRune1.transform.position.y, 0);
+        bossRune1.transform.localScale = new Vector3(5f, 5f, 5f);
+        
+        GameObject bossRune2 = Instantiate(_rune, bottom, transform.rotation);
+        bossRune2.transform.position = new Vector3(bossRune2.transform.position.x, bossRune2.transform.position.y, 0);
+        bossRune2.transform.localScale = new Vector3(5f, 5f, 5f);
+        
+        GameObject bossRune3 = Instantiate(_rune, left, transform.rotation);
+        bossRune3.transform.position = new Vector3(bossRune3.transform.position.x, bossRune3.transform.position.y, 0);
+        bossRune3.transform.localScale = new Vector3(5f, 5f, 5f);
+        
+        GameObject bossRune4 = Instantiate(_rune, right, transform.rotation);
+        bossRune4.transform.position = new Vector3(bossRune4.transform.position.x, bossRune4.transform.position.y, 0);
+        bossRune4.transform.localScale = new Vector3(5f, 5f, 5f);
+        
+        //spawning the runes and the boss and scaling them by 10.5
+
+
+        ///
+        ///
+
+    }
 }  
 
 
