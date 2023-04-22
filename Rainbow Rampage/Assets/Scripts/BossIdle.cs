@@ -14,7 +14,7 @@ public class BossIdle : StateMachineBehaviour
     {
         if (attackTimer <= 0)
         {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("GoToRune");
         }
         else
         {
@@ -24,6 +24,6 @@ public class BossIdle : StateMachineBehaviour
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("Attack");
+        animator.ResetTrigger("GoToRune");
     }
 }
