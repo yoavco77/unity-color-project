@@ -8,8 +8,6 @@ public class SpawnMissles : MonoBehaviour
     public float wait;
     public float howMuchWait;
 
-    public Animator animator;
-
     void Start()
     {
         wait = howMuchWait;
@@ -22,13 +20,10 @@ public class SpawnMissles : MonoBehaviour
         {
             Vector3 spawnPoint = transform.position;
             GameObject Missle = Instantiate(_missle, spawnPoint, transform.rotation);
-            Missle.GetComponent<EnemyFollow>().enabled = false;
-            Missle.GetComponent<Rigidbody2D>().gravityScale = 1f;
-            yield return new WaitForSeconds(Random.Range(0.5f, 1f));
-            Missle.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Missle.GetComponent<Rigidbody2D>().gravityScale = 0.2f;
+            yield return new WaitForSeconds(Random.Range(0.02f, 0.1f));
             Missle.GetComponent<Rigidbody2D>().gravityScale = 0;
-            Missle.GetComponent<EnemyFollow>().enabled = true;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
 
     }
@@ -36,19 +31,6 @@ public class SpawnMissles : MonoBehaviour
     public void missleAttack()
     {
         StartCoroutine(spawnMissles(Missle));
-        animator.SetTrigger("Already attacked");
-    }
-
-    public void closePortal()
-    {
-        GameObject[] enemySpawndByPortal = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int i =0; i<enemySpawndByPortal.Length; i++)
-        {
-            enemySpawndByPortal[i].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            enemySpawndByPortal[i].GetComponent<Rigidbody2D>().gravityScale = 0;
-            enemySpawndByPortal[i].GetComponent<EnemyFollow>().enabled = true;
-        }
-        Destroy(gameObject);
 
     }
 }
